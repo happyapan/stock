@@ -36,7 +36,7 @@ public class StockFetchUtils {
 //                        {
 //                            "stoid": "1",
 //                             "symbol": "sh600000",
-//                             "sname": "∆÷∑¢“¯––"
+//                             "sname": "Êµ¶ÂèëÈì∂Ë°å"
 //                         }
 //                    ]
 //            }
@@ -67,7 +67,7 @@ public class StockFetchUtils {
     }
 
     /**
-     * ªÒ»°π…∆±Ωª“◊–≈œ¢¥Ê¥¢¡Ÿ ±Œƒº˛÷–
+     * Ëé∑ÂèñËÇ°Á•®‰∫§Êòì‰ø°ÊÅØÂ≠òÂÇ®‰∏¥Êó∂Êñá‰ª∂‰∏≠
      *
      * @param stockCode
      * @param startDate
@@ -160,7 +160,7 @@ public class StockFetchUtils {
                 }
             }
             if(isExistData){
-                  FileUtils.writeLines(new File(StockConstans.STOCK_FILE_READ_PATH + "\\" + stockCode + StockConstans.DATA_FILE_TYPE), validateStockData, true);
+                FileUtils.writeLines(new File(StockConstans.STOCK_FILE_READ_PATH + "\\" + stockCode + StockConstans.DATA_FILE_TYPE), validateStockData, true);
             }
 
         } catch (IOException e) {

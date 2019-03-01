@@ -1,6 +1,7 @@
-package com.stock.analysis;
+package com.stock.calculate;
 
 
+import com.stock.analysis.BaseAnalysis;
 import com.stock.utils.StockReadUtils;
 import com.stock.vo.StockRecordBean;
 import com.common.utils.DateUtil;
@@ -16,45 +17,47 @@ public class ContinueDayKGreen extends BaseAnalysis {
     /**
      * 计算几天内的涨幅
      * @param stockCodes
-     * @param minDownPrice 最小收盘价与开盘价价差
+     * @param minDownFeng 最小收盘价与开盘价价差,单位为分
      * @param dateLine 最后计算日期
      * @param dayCount 计算天数
      * @return
      */
-    public List<StockRecordBean> anlysis(List<String> stockCodes, Float minDownPrice,String dateLine,Integer dayCount) {
+    public List<StockRecordBean> anlysis(List<String> stockCodes, int minDownFeng,String dateLine,Integer dayCount) {
         List<StockRecordBean> resultRecords = new ArrayList<StockRecordBean>();
         if (stockCodes == null || stockCodes.size() == 0) {
             stockCodes = StockReadUtils.getAllStockCode();
         }
 
-        if(minDownPrice==null){
-            minDownPrice=0f;
-        }
         if(isEmpty(dateLine)){
             dateLine= DateUtil.GET_CURRENT_DATE();
         }
         if(dayCount== null){
             dayCount=30;
         }
+        int tmpCompareSuccessDay=0;
         for (String stockCode : stockCodes) {
-            List<StockRecordBean> records = StockReadUtils.getOneStockTotalData(stockCode, dateLine, null, dayCount);
+            tmpCompareSuccessDay=0;
+
+            List<StockRecordBean> records = StockReadUtils.getOneStockTotalData(stockCode, dateLine, null, null);
             if(records!=null && records.size()>=dayCount){
                 StockRecordBean theLastestRecord=records.get(0);
-                boolean continueGreen=true;
-                for(int i=0;continueGreen && i<records.size();i++){
+                for(int i=0;i<records.size();i++){
                     StockRecordBean currentRecord=records.get(i);
-                    Float downPrice =F(currentRecord.getOpenPrice())-F(currentRecord.getOverPrice());
-                    if(downPrice.compareTo(minDownPrice)>=0){
-                        if(i>0){
-                            theLastestRecord.compareSuccessRecords.add(currentRecord);
-                        }
+                    //开盘价-收盘价
+                    Float diffPrice =F(currentRecord.getOpenPrice())-F(currentRecord.getOverPrice());
+                    diffPrice=diffPrice*100;
+                    //>0 表示绿的
+                    if(diffPrice.intValue()>0 && diffPrice.intValue() >= minDownFeng){
+                        tmpCompareSuccessDay++;
                     }else{
-                        continueGreen=false;
+                       break;
+                    }
+                    if(tmpCompareSuccessDay>=dayCount){
+                        resultRecords.add(theLastestRecord);
+                        break;
                     }
                 }
-                if(continueGreen){
-                    resultRecords.add(theLastestRecord);
-                }
+
             }
         }
         return resultRecords;

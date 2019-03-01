@@ -180,7 +180,7 @@ public class StockRecordBean {
     }
 
     public String getFormatData(){
-        return this.stockDate+",'"+this.stockCode+","+this.stockName+","+this.openPrice+","+this.getOverPrice()+","+this.getPlusRate()+"%,"+this.lastOverPrice;
+        return this.stockDate+",'"+this.stockCode+","+this.stockName+",开"+this.openPrice+",收"+this.getOverPrice()+",Rate"+this.getPlusRate()+"%,昨收"+this.lastOverPrice;
     }
     public static String getFormatTitle(){
         return "日期,编码,名称,开盘,收盘,涨幅,昨收";

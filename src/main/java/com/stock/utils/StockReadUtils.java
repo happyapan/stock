@@ -8,6 +8,7 @@ import com.stock.vo.StockRecordBean;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,9 +45,12 @@ public class StockReadUtils {
      * @param code
      * @param endDate 结束时间
      * @param beginDate 开始时间
-     * @return
+     * @return  最新的数据排在上面
      */
-    public static List<StockRecordBean> getOneStockTotalData(String code,String endDate,String beginDate,int maxDataCount){
+    public static List<StockRecordBean> getOneStockTotalData(String code,String endDate,String beginDate,Integer maxDataCount){
+        if(maxDataCount==null || maxDataCount.intValue()==0){
+            maxDataCount=Integer.MAX_VALUE;
+        }
         List<StockRecordBean> records=new ArrayList<StockRecordBean>();
         try {
             File stockFile=new File(StockConstans.STOCK_FILE_READ_PATH+"\\"+code+StockConstans.DATA_FILE_TYPE);
@@ -85,6 +89,7 @@ public class StockReadUtils {
         }catch (Exception ex){
 
         }
+        Collections.reverse(records);
         return records;
     }
 

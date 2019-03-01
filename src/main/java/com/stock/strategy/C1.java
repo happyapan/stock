@@ -1,4 +1,4 @@
-package com.stock.calculate;
+package com.stock.strategy;
 
 import com.stock.utils.StockReadUtils;
 import com.stock.vo.StockRecordBean;

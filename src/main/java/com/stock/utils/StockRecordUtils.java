@@ -7,43 +7,43 @@ import com.stock.vo.StockRecordBean;
  */
 public class StockRecordUtils {
     public static StockRecordBean formatDataFrom163(String oneStrRecord) {
-        //ÈÕÆÚ	¹ÉÆ±´úÂë	Ãû³Æ	ÊÕÅÌ¼Û	×î¸ß¼Û	×îµÍ¼Û	¿ªÅÌ¼Û	Ç°ÊÕÅÌ	ÕÇµø¶î	ÕÇµø·ù	»»ÊÖÂÊ	³É½»Á¿	³É½»½ğ¶î	×ÜÊĞÖµ	Á÷Í¨ÊĞÖµ
+        //æ—¥æœŸ	è‚¡ç¥¨ä»£ç 	åç§°	æ”¶ç›˜ä»·	æœ€é«˜ä»·	æœ€ä½ä»·	å¼€ç›˜ä»·	å‰æ”¶ç›˜	æ¶¨è·Œé¢	æ¶¨è·Œå¹…	æ¢æ‰‹ç‡	æˆäº¤é‡	æˆäº¤é‡‘é¢	æ€»å¸‚å€¼	æµé€šå¸‚å€¼
         String[] record = oneStrRecord.split(",");
         if (record.length >= 13) {
             StockRecordBean stockRecordBean = new StockRecordBean();
-            //ÈÕÆÚ
+            //æ—¥æœŸ
             stockRecordBean.setStockDate(record[0]);
-            // ¹ÉÆ±´úÂë
+            // è‚¡ç¥¨ä»£ç 
             stockRecordBean.setStockCode(record[1].replaceAll("'", ""));
-            // Ãû³Æ
+            // åç§°
             stockRecordBean.setStockName(record[2]);
-            // ÊÕÅÌ¼Û
+            // æ”¶ç›˜ä»·
             stockRecordBean.setOverPrice(record[3]);
-            // ×î¸ß¼Û
+            // æœ€é«˜ä»·
             stockRecordBean.setHighPrice(record[4]);
-            // ×îµÍ¼Û
+            // æœ€ä½ä»·
             stockRecordBean.setLowPrice(record[5]);
-            // ¿ªÅÌ¼Û
+            // å¼€ç›˜ä»·
             stockRecordBean.setOpenPrice(record[6]);
-            // 	Ç°ÊÕÅÌ
+            // 	å‰æ”¶ç›˜
             stockRecordBean.setLastOverPrice(record[7]);
-            // ÕÇµø¶î
+            // æ¶¨è·Œé¢
             stockRecordBean.setPlusPrice(record[8]);
-            // ÕÇµø·ù
+            // æ¶¨è·Œå¹…
             stockRecordBean.setPlusRate(record[9]);
-            // »»ÊÖÂÊ
+            // æ¢æ‰‹ç‡
             stockRecordBean.setChangeRate(record[10]);
-            // ³É½»Á¿
+            // æˆäº¤é‡
             stockRecordBean.setDoneCount(record[11]);
-            // ³É½»½ğ¶î
+            // æˆäº¤é‡‘é¢
             stockRecordBean.setDonePrice(record[12]);
 
             if (record.length >= 14) {
-                // ×ÜÊĞÖµ
+                // æ€»å¸‚å€¼
                 stockRecordBean.setTotalMarketAmount(record[13]);
             }
             if (record.length >= 15) {
-                // Á÷Í¨ÊĞÖµ
+                // æµé€šå¸‚å€¼
                 stockRecordBean.setCanSalePrice(record[14]);
             }
             return stockRecordBean;
