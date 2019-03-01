@@ -1,5 +1,6 @@
 package com.stock.strategy;
 
+import com.stock.calculate.DayGoldenX;
 import com.stock.utils.StockReadUtils;
 import com.stock.vo.StockRecordBean;
 import com.stock.analysis.*;
@@ -36,7 +37,7 @@ public class C1 extends BaseAnalysis {
                 }
                 //十字星
                 DayGoldenX goldenX =new DayGoldenX();
-                List<StockRecordBean> golds=goldenX.anlysis(this.getStockCodeList(afterNDayStock), 0.02f, afterNDayStock.getStockDate());
+                List<StockRecordBean> golds=goldenX.anlysis(this.getStockCodeList(afterNDayStock), 2, afterNDayStock.getStockDate(), afterNDayStock.getStockDate());
 
                 //吊颈线
                 TLine tLine=new TLine();

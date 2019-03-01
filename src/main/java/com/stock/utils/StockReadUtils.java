@@ -76,7 +76,7 @@ public class StockReadUtils {
                         if(beginDate !=null && !"".equals(beginDate)){
                             //当前记录时间小于
                             if(one.getStockDate().compareTo(beginDate)<0){
-                                break;
+                                continue;
                             }
                         }
                         records.add(one);
