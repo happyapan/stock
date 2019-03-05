@@ -10,8 +10,8 @@ import java.util.Arrays;
  */
 public class BuildDateMain {
     public static void main(String[]agrs){
-        StockFetchUtils.refreshStockData(Arrays.asList("600770"));
-//        StockFetchUtils.refreshStockData(StockReadUtils.getAllStockCode());
+//        StockFetchUtils.refreshStockData(Arrays.asList("600770"));
+        StockFetchUtils.refreshStockData(StockReadUtils.getAllStockCode());
     }
 
 }

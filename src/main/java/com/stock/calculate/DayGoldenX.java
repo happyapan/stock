@@ -1,6 +1,7 @@
 package com.stock.calculate;
 
 import com.common.utils.DateUtil;
+import com.common.utils.P;
 import com.stock.analysis.BaseAnalysis;
 import com.stock.utils.StockReadUtils;
 import com.stock.vo.StockRecordBean;
@@ -29,6 +30,7 @@ public class DayGoldenX extends BaseAnalysis {
             stockCodes = StockReadUtils.getAllStockCode();
         }
         for (String stockCode : stockCodes) {
+            P.PN("-");
             List<StockRecordBean> records = StockReadUtils.getOneStockTotalData(stockCode,endDate,startDate,null);
             if(records==null || records.size()==0){
                 continue;

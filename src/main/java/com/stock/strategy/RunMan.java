@@ -13,7 +13,7 @@ public class RunMan {
 //        P.P_RESULT(calculateTool.anlysis(null,1,"2019-02-01",new Integer(7)));
 //
         DayGoldenX calculateTool = new DayGoldenX();
-        P.P_RESULT(calculateTool.anlysis(null, 1, "2019-02-23","2019-02-19"));
+        P.P_RESULT(calculateTool.anlysis(null, 1, "2019-02-22","2019-02-18"));
 //        P.P_RESULT(continueDayKGreen.anlysis(Arrays.asList("600018"),1,"2019-02-01",new Integer(2)));
 
     }

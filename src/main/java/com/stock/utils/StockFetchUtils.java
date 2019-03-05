@@ -121,7 +121,7 @@ public class StockFetchUtils {
         List<StockRecordBean> records =StockReadUtils.getOneStockTotalData(stockCode, null,DateUtil.THREE_YEAR_AGE , 9000);
         if(records!=null && records.size()>0){
             isExistOldFile=true;
-            StockRecordBean lastestStockRecord=records.get(records.size()-1);
+            StockRecordBean lastestStockRecord=records.get(0);
             startDate=DateUtil.GET_DATE_AFTER_ONE_DAY(lastestStockRecord.getStockDate());
         }
 

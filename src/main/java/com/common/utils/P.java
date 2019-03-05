@@ -15,6 +15,13 @@ public class P {
             System.out.println(str);
         }
     }
+    public static void PN(String str){
+        if(StringUtils.isEmpty(str)){
+            System.out.print("");
+        }else{
+            System.out.print(str);
+        }
+    }
     public static void P_RESULT(List<StockRecordBean> recordBeans){
         if(recordBeans!=null && recordBeans.size()>0){
             recordBeans.stream().forEach(one ->P.P(one.getFormatData()));
